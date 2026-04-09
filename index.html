@@ -757,7 +757,7 @@
         window.addEventListener('DOMContentLoaded', () => {
             muatDataSpreadsheet();
             cekSesiLogin();
-            muatGaleriLokal(); // Load galeri dari storage browser
+            muatGaleri(); // Memanggil data galeri dari GAS saat web dibuka
         });
 
         // --- 3. LOGIC AUTHENTICATION (GLOBAL LOGIN) ---
@@ -1011,32 +1011,34 @@
                 });
         });
 
-        // --- 7. LOGIKA GALERI & UPLOAD FOTO SIMULASI ---
-        let galeriData = JSON.parse(localStorage.getItem('trip45Gallery')) || [
-            // Dummy foto inisial untuk mempercantik jika kosong
-            { id: 1, uploader: 'Panitia', src: 'https://images.unsplash.com/photo-1596404746654-734d0dfefd78?auto=format&fit=crop&q=80&w=400', waktu: 'Hari Ini' },
-            { id: 2, uploader: 'Panitia', src: 'https://nnc-media.netralnews.com/2025/05/IMG-Netral-News-User-11902-OE53JYUVC0.jpg', waktu: 'Hari Ini' }
-        ];
+        // --- UPDATE LOGIKA GALERI KE SERVER GAS ---
 
-        function muatGaleriLokal() {
+        async function muatGaleri() {
             const grid = document.getElementById('galleryGrid');
-            if (galeriData.length === 0) {
-                grid.innerHTML = '<div style="grid-column: 1 / -1; text-align:center; color:#94a3b8; padding: 20px;">Belum ada foto yang diunggah.</div>';
-                return;
+            try {
+                const res = await fetch(gasURL + '?action=getGaleri');
+                const galeriData = await res.json();
+                
+                if (galeriData.length === 0) {
+                    grid.innerHTML = '<div style="grid-column: 1 / -1; text-align:center; color:#94a3b8; padding: 20px;">Belum ada foto yang diunggah. Jadilah yang pertama!</div>';
+                    return;
+                }
+                
+                let html = '';
+                galeriData.forEach(item => {
+                    html += `
+                    <div class="gallery-item">
+                        <img src="${item.src}" alt="Foto Galeri" loading="lazy">
+                        <div class="overlay">
+                            <span><i class="fa-solid fa-circle-user"></i> ${item.uploader}</span>
+                        </div>
+                    </div>`;
+                });
+                grid.innerHTML = html;
+            } catch (e) {
+                console.error("Gagal memuat galeri", e);
+                grid.innerHTML = '<div style="text-align:center; color:#dc2626; grid-column: 1 / -1;">Gagal terhubung ke server galeri.</div>';
             }
-            let html = '';
-            // Tampilkan dari yang terbaru
-            const sortedData = [...galeriData].reverse();
-            sortedData.forEach(item => {
-                html += `
-                <div class="gallery-item">
-                    <img src="${item.src}" alt="Foto Galeri">
-                    <div class="overlay">
-                        <span><i class="fa-solid fa-circle-user"></i> ${item.uploader}</span>
-                    </div>
-                </div>`;
-            });
-            grid.innerHTML = html;
         }
 
         function previewDanUploadFoto(event) {
@@ -1046,12 +1048,10 @@
             
             if (!file || !user) return;
             
-            // Tampilkan status loading
-            statusLabel.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sedang mengompres & mengunggah...';
+            statusLabel.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sedang mengompres & mengirim ke server...';
             statusLabel.style.display = 'block';
             statusLabel.style.color = 'var(--primary)';
 
-            // Kompresi gambar dengan Canvas agar tidak membuat localStorage penuh
             const reader = new FileReader();
             reader.readAsDataURL(file);
             reader.onload = function (e) {
@@ -1059,56 +1059,54 @@
                 img.src = e.target.result;
                 img.onload = function () {
                     const canvas = document.createElement('canvas');
-                    const MAX_WIDTH = 600;
-                    const MAX_HEIGHT = 600;
+                    const MAX_WIDTH = 800; // Dikompres agar tidak memberatkan request
+                    const MAX_HEIGHT = 800;
                     let width = img.width;
                     let height = img.height;
 
                     if (width > height) {
-                        if (width > MAX_WIDTH) {
-                            height *= MAX_WIDTH / width;
-                            width = MAX_WIDTH;
-                        }
+                        if (width > MAX_WIDTH) { height *= MAX_WIDTH / width; width = MAX_WIDTH; }
                     } else {
-                        if (height > MAX_HEIGHT) {
-                            width *= MAX_HEIGHT / height;
-                            height = MAX_HEIGHT;
-                        }
+                        if (height > MAX_HEIGHT) { width *= MAX_HEIGHT / height; height = MAX_HEIGHT; }
                     }
 
-                    canvas.width = width;
-                    canvas.height = height;
+                    canvas.width = width; canvas.height = height;
                     const ctx = canvas.getContext('2d');
                     ctx.drawImage(img, 0, 0, width, height);
 
-                    // Konversi ke format Base64 (JPEG, kualitas 70%)
-                    const dataUrl = canvas.toDataURL('image/jpeg', 0.7);
+                    const dataUrl = canvas.toDataURL('image/jpeg', 0.6); // Kualitas 60%
 
-                    // Simpan ke array
-                    const fotoBaru = {
-                        id: Date.now(),
-                        uploader: user.nama,
-                        src: dataUrl,
-                        waktu: new Date().toLocaleDateString('id-ID')
-                    };
+                    // KIRIM KE GOOGLE APPS SCRIPT
+                    const formData = new URLSearchParams();
+                    formData.append('action', 'uploadFoto');
+                    formData.append('nama', user.nama);
+                    formData.append('fileData', dataUrl);
+                    formData.append('waktu', new Date().toLocaleString('id-ID'));
 
-                    // Batasi jumlah foto agar localStorage tidak membludak (max 15 foto)
-                    if (galeriData.length >= 15) {
-                        galeriData.shift(); // Hapus foto paling lama jika batas tercapai
-                    }
-
-                    galeriData.push(fotoBaru);
-                    localStorage.setItem('trip45Gallery', JSON.stringify(galeriData));
-
-                    // Sukses update UI
-                    statusLabel.innerHTML = '<i class="fa-solid fa-circle-check"></i> Foto berhasil diunggah!';
-                    muatGaleriLokal();
-
-                    // Reset notifikasi setelah 3 detik
-                    setTimeout(() => {
-                        statusLabel.style.display = 'none';
-                        document.getElementById('fotoUpload').value = ''; // Reset input file
-                    }, 3000);
+                    fetch(gasURL, { 
+                        method: 'POST', 
+                        body: formData, 
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if(data.status === "success") {
+                            statusLabel.innerHTML = '<i class="fa-solid fa-circle-check"></i> Foto berhasil tersimpan di server!';
+                            muatGaleri(); // Refresh galeri dari server
+                        } else {
+                            statusLabel.innerHTML = '<i class="fa-solid fa-circle-xmark"></i> Gagal menyimpan: ' + data.message;
+                            statusLabel.style.color = '#dc2626';
+                        }
+                        
+                        setTimeout(() => {
+                            statusLabel.style.display = 'none';
+                            document.getElementById('fotoUpload').value = '';
+                        }, 4000);
+                    })
+                    .catch(err => {
+                        statusLabel.innerHTML = '<i class="fa-solid fa-circle-xmark"></i> Error jaringan atau server sibuk.';
+                        statusLabel.style.color = '#dc2626';
+                    });
                 }
             }
         }
