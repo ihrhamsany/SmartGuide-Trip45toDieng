@@ -27,124 +27,227 @@
         /* --- NAVBAR --- */
         .navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.05); transition: var(--transition); }
         .logo { display: flex; align-items: center; text-decoration: none; }
-        .nav-links { list-style: none; display: flex; gap: 25px; align-items: center; }
+        .nav-links { list-style: none; display: flex; gap: 25px; align-items: center; margin: 0; }
         .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 15px; transition: var(--transition); position: relative; }
         .nav-links a:not(.btn-nav):not(.btn-logout)::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: var(--primary); transition: width 0.3s ease; }
         .nav-links a:not(.btn-nav):not(.btn-logout):hover::after, .nav-links a.active:not(.btn-nav):not(.btn-logout)::after { width: 100%; }
         .nav-links a:hover, .nav-links a.active { color: var(--primary); }
-        .btn-nav { background: var(--primary); color: var(--white) !important; padding: 10px 20px; border-radius: 50px; box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3); border: 2px solid transparent; display: inline-block; }
+        .btn-nav { background: var(--primary); color: var(--white) !important; padding: 10px 20px; border-radius: 50px; box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3); border: 2px solid transparent; display: inline-flex; align-items: center; justify-content: center; gap: 8px; white-space: nowrap; }
         .btn-nav:hover { background: var(--primary-dark); transform: translateY(-2px); }
-        .btn-logout { color: #dc2626 !important; font-weight: 700 !important; background: #fee2e2; padding: 8px 15px; border-radius: 50px; transition: var(--transition); }
+        .btn-logout { color: #dc2626 !important; font-weight: 700 !important; background: #fee2e2; padding: 10px 20px; border-radius: 50px; transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; }
         .btn-logout:hover { background: #fca5a5; color: #991b1b !important; }
         .menu-toggle { display: none; cursor: pointer; font-size: 24px; color: var(--primary); z-index: 1001; }
 
         /* --- HERO SECTION --- */
-        #beranda { height: 100vh; background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=1920') center/cover; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; color: var(--white); scroll-margin-top: 0; }
-        .hero-tags { display: flex; gap: 15px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
-        .hero-tag { background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 50px; backdrop-filter: blur(5px); font-size: 14px; font-weight: 600; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; }
+        #beranda { min-height: 100vh; background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=1920') center/cover; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 100px 20px 60px; color: var(--white); scroll-margin-top: 0; }
+        .hero-tags { display: flex; gap: 10px; margin-bottom: 25px; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hero-tag { background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 50px; backdrop-filter: blur(5px); font-size: clamp(0.8rem, 1.5vw, 0.9rem); font-weight: 600; letter-spacing: 0.5px; display: inline-flex; align-items: center; gap: 8px; }
         .weather-badge { background: rgba(5, 150, 105, 0.8); border: 1px solid rgba(255,255,255,0.3); }
-        .hero-title { font-size: 64px; font-weight: 800; margin-bottom: 15px; line-height: 1.1; }
-        .hero-subtitle { font-size: 20px; max-width: 600px; margin-bottom: 40px; color: #cbd5e1; }
+        .hero-title { font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem); font-weight: 800; margin-bottom: 20px; line-height: 1.1; padding: 0 10px; }
+        .hero-subtitle { font-size: clamp(1rem, 2vw, 1.2rem); max-width: 650px; margin-bottom: 40px; color: #cbd5e1; padding: 0 15px; }
 
         /* --- SECTIONS --- */
         section { padding: 100px 5%; scroll-margin-top: 70px; }
-        .section-header { text-align: center; margin-bottom: 60px; }
-        .section-header h2 { font-size: 36px; font-weight: 800; color: var(--secondary); margin-bottom: 15px; }
-        .section-header p { color: var(--text-light); font-size: 18px; max-width: 600px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: clamp(2rem, 4vw, 2.5rem); font-weight: 800; color: var(--secondary); margin-bottom: 15px; }
+        .section-header p { color: var(--text-light); font-size: clamp(1rem, 2vw, 1.1rem); max-width: 600px; margin: 0 auto; line-height: 1.6; }
 
         /* --- SEARCH & PLOTTING --- */
-        .search-container { max-width: 650px; margin: 0 auto 40px auto; text-align: center; }
+        .search-container { max-width: 650px; margin: 0 auto 40px auto; text-align: center; width: 100%; }
         .search-input-wrapper { position: relative; width: 100%; margin-bottom: 20px; }
         .search-input-wrapper i { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--text-light); font-size: 20px; }
         #searchInput { width: 100%; padding: 18px 20px 18px 55px; font-size: 16px; font-family: 'Plus Jakarta Sans', sans-serif; border-radius: 50px; border: 2px solid #cbd5e1; outline: none; transition: var(--transition); box-shadow: 0 10px 20px rgba(0,0,0,0.02); }
         #searchInput:focus { border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-light); }
         .search-results { margin-top: 20px; display: flex; flex-direction: column; gap: 15px; }
-        .result-card { background: var(--white); padding: 25px; border-radius: 16px; border-left: 5px solid var(--primary); box-shadow: 0 10px 20px rgba(0,0,0,0.05); text-align: left; animation: fadeIn 0.3s ease; }
-        .plot-container { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; max-width: 900px; margin: 0 auto 60px auto; }
-        .plot-btn { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 25px; background: var(--white); color: var(--secondary); text-decoration: none; border-radius: 16px; font-weight: 700; border: 1px solid #e2e8f0; transition: var(--transition); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-        .plot-btn:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-3px); }
+        .result-card { background: var(--white); padding: clamp(15px, 3vw, 25px); border-radius: 16px; border-left: 5px solid var(--primary); box-shadow: 0 10px 20px rgba(0,0,0,0.05); text-align: left; animation: fadeIn 0.3s ease; }
+        .result-stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-bottom: 15px; }
+        .stat-box { background: #f8fafc; padding: 12px; border-radius: 12px; border: 1px solid #e2e8f0; text-align: center; }
+        .stat-label { font-size: 10px; font-weight: 800; color: var(--text-light); letter-spacing: 1px; margin-bottom: 5px; }
+        .stat-value { font-size: clamp(14px, 2vw, 15px); color: var(--primary-dark); font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 5px; }
+        
+        .plot-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto 40px auto; }
+        .plot-btn { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 25px; background: var(--white); color: var(--secondary); text-decoration: none; border-radius: 16px; font-weight: 700; border: 1px solid #e2e8f0; transition: var(--transition); box-shadow: 0 4px 6px rgba(0,0,0,0.02); cursor: pointer; width: 100%; font-size: 15px; }
+        .plot-btn:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.05); }
 
         /* --- INFO PENTING --- */
         #info { background-color: var(--secondary); color: var(--white); }
         #info .section-header h2 { color: var(--white); }
         #info .section-header p { color: #94a3b8; }
-        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1100px; margin: 0 auto; }
-        .info-box { background: rgba(255, 255, 255, 0.05); padding: 40px; border-radius: 24px; border: 1px solid rgba(255, 255, 255, 0.1); }
-        .info-box h3 { font-size: 24px; margin-bottom: 25px; color: var(--primary-light); display: flex; align-items: center; gap: 10px; }
-        .checklist-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
-        .checklist-item { display: flex; align-items: center; gap: 15px; background: rgba(0, 0, 0, 0.2); padding: 15px; border-radius: 12px; cursor: pointer; transition: var(--transition); }
-        .checklist-item:hover { background: rgba(0, 0, 0, 0.4); }
-        .checklist-item input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer; }
-        .checklist-item i { font-size: 24px; color: #fbbf24; }
-        .checklist-item span { font-weight: 600; font-size: 15px; }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto; }
+        .info-box { background: rgba(255, 255, 255, 0.05); padding: clamp(25px, 5vw, 40px); border-radius: 24px; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .info-box h3 { font-size: clamp(20px, 3vw, 24px); margin-bottom: 25px; color: var(--primary-light); display: flex; align-items: center; gap: 10px; }
+        
+        .auth-input-group { display: flex; gap: 10px; width: 100%; }
+        .form-input { width: 100%; padding: 12px 15px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(0, 0, 0, 0.2); color: white; font-family: inherit; font-size: 15px; transition: var(--transition); }
+        .form-input::placeholder { color: #94a3b8; }
+        .form-input:focus { outline: none; border-color: var(--primary); background: rgba(0,0,0,0.4); }
+        
+        .checklist-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
+        .checklist-item { display: flex; align-items: center; gap: 12px; background: rgba(0, 0, 0, 0.2); padding: 15px; border-radius: 12px; cursor: pointer; transition: var(--transition); border: 1px solid transparent; }
+        .checklist-item:hover { background: rgba(0, 0, 0, 0.4); border-color: rgba(255,255,255,0.1); }
+        .checklist-item input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer; flex-shrink: 0; }
+        .checklist-item i { font-size: 20px; color: #fbbf24; width: 24px; text-align: center; }
+        .checklist-item span { font-weight: 600; font-size: 14px; line-height: 1.3; }
+        
         .rules-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
-        .rules-list li { display: flex; align-items: flex-start; gap: 15px; font-size: 15px; line-height: 1.5; color: #cbd5e1; }
-        .rules-list i { color: var(--primary); font-size: 20px; margin-top: 2px; }
+        .rules-list li { display: flex; align-items: flex-start; gap: 15px; font-size: 15px; line-height: 1.6; color: #cbd5e1; }
+        .rules-list i { color: var(--primary); font-size: 20px; margin-top: 3px; flex-shrink: 0; }
 
         /* --- RUNDOWN --- */
         .tabs-container { max-width: 900px; margin: 0 auto; background: var(--white); border-radius: 24px; box-shadow: 0 15px 30px rgba(0,0,0,0.05); overflow: hidden; }
-        .tab-buttons { display: flex; background: var(--bg-light); border-bottom: 1px solid #e2e8f0; }
-        .tab-btn { flex: 1; padding: 20px; border: none; background: none; font-size: 20px; font-weight: 700; color: var(--text-light); cursor: pointer; transition: var(--transition); position: relative; }
+        .tab-buttons { display: flex; background: var(--bg-light); border-bottom: 1px solid #e2e8f0; flex-wrap: wrap; }
+        .tab-btn { flex: 1; min-width: 120px; padding: 20px 15px; border: none; background: none; font-size: clamp(16px, 2vw, 18px); font-weight: 700; color: var(--text-light); cursor: pointer; transition: var(--transition); position: relative; text-align: center; }
         .tab-btn.active { color: var(--primary); background: var(--white); }
         .tab-btn.active::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 3px; background: var(--primary); }
-        .tab-content { display: none; padding: 40px; animation: fadeIn 0.5s ease; }
+        .tab-content { display: none; padding: clamp(20px, 5vw, 40px); animation: fadeIn 0.4s ease; }
         .tab-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .timeline { list-style: none; position: relative; padding-top: 10px; padding-bottom: 10px; }
+        
+        .timeline { list-style: none; position: relative; padding: 10px 0; }
         .timeline::before { content: ''; position: absolute; top: 0; bottom: 0; left: 35px; width: 2px; background: #e2e8f0; }
-        .timeline li { position: relative; padding-left: 110px; margin-bottom: 35px; }
+        .timeline li { position: relative; padding-left: 100px; margin-bottom: 35px; }
         .timeline li:last-child { margin-bottom: 0; }
-        .time-badge { position: absolute; left: 0; top: 0; background: var(--primary); color: var(--white); font-size: 15px; font-weight: 800; padding: 8px 18px; border-radius: 30px; z-index: 2; border: 4px solid var(--white); box-shadow: 0 4px 10px rgba(5, 150, 105, 0.2); transform: translateY(-5px); }
-        .timeline-desc { background: var(--bg-light); padding: 20px 25px; border-radius: 16px; border: 1px solid #e2e8f0; font-size: 16px; line-height: 1.7; color: var(--text-dark); }
-        .timeline-desc strong { display: inline-block; font-size: 20px; color: var(--secondary); font-weight: 800; margin-bottom: 5px; }
+        .time-badge { position: absolute; left: 0; top: 0; background: var(--primary); color: var(--white); font-size: 14px; font-weight: 800; padding: 8px 16px; border-radius: 30px; z-index: 2; border: 4px solid var(--white); box-shadow: 0 4px 10px rgba(5, 150, 105, 0.2); transform: translateY(-5px); white-space: nowrap; }
+        .timeline-desc { background: var(--bg-light); padding: 20px; border-radius: 16px; border: 1px solid #e2e8f0; font-size: 15px; line-height: 1.6; color: var(--text-dark); transition: var(--transition); }
+        .timeline-desc:hover { border-color: #cbd5e1; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+        .timeline-desc strong { display: block; font-size: 18px; color: var(--secondary); font-weight: 800; margin-bottom: 5px; }
+
+        /* --- DESTINASI SECTION --- */
+        #destinasi { background-color: var(--bg-light); }
+        .destinasi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .card { border-radius: 16px; overflow: hidden; background: var(--white); box-shadow: 0 10px 20px rgba(0,0,0,0.05); position: relative; transition: var(--transition); height: 100%; display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 20px 30px rgba(0,0,0,0.1); }
+        .card a { display: block; overflow: hidden; }
+        .card img { width: 100%; height: 220px; object-fit: cover; transition: transform 0.5s ease; display: block; }
+        .card:hover img { transform: scale(1.08); }
+        .card-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .card-content h4 { font-size: 18px; margin-bottom: 8px; color: var(--secondary); font-weight: 700; }
+        .card-content p { color: var(--text-light); font-size: 14px; line-height: 1.5; margin: 0; }
+
+        /* --- FASILITAS SECTION --- */
+        #fasilitas { background-color: var(--bg-light); overflow-x: hidden; }
+        .fasilitas-wrapper { max-width: 1000px; margin: 0 auto; width: 100%; }
+        
+        .box-combined { background: var(--white); padding: clamp(25px, 5vw, 40px); border-radius: 24px; box-shadow: 0 15px 30px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+        .fasilitas-inner-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
+        
+        .include-section { padding-bottom: 25px; border-bottom: 1px dashed #cbd5e1; }
+        .exclude-section { padding-top: 5px; }
+
+        @media (min-width: 860px) {
+            .fasilitas-inner-grid { grid-template-columns: 1.8fr 1fr; gap: 40px; }
+            .include-section { padding-bottom: 0; border-bottom: none; border-right: 1px dashed #cbd5e1; padding-right: 40px; }
+            .exclude-section { padding-top: 0; padding-left: 10px; }
+        }
+
+        .box-combined h3 { font-size: clamp(20px, 3vw, 24px); margin-bottom: 25px; display: flex; align-items: center; gap: 10px; }
+        .include-section h3 { color: var(--primary-dark); }
+        .exclude-section h3 { color: #991b1b; }
+        
+        .check-list { list-style: none; display: grid; grid-template-columns: 1fr; gap: 15px; }
+        @media (min-width: 600px) {
+            .include-section .check-list { grid-template-columns: 1fr 1fr; }
+        }
+        .check-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--text-dark); line-height: 1.5; word-break: break-word; }
+        .check-list i { margin-top: 3px; flex-shrink: 0; font-size: 18px; }
+        .check-list i.fa-check-circle { color: var(--primary); }
+        .check-list i.fa-times-circle { color: #dc2626; }
 
         /* --- CHAT / KOMENTAR SECTION --- */
-        #komentar { background-color: var(--bg-light); padding-top: 60px; padding-bottom: 100px; }
-        .chat-container { max-width: 800px; margin: 0 auto; background: var(--white); border-radius: 24px; box-shadow: 0 15px 30px rgba(0,0,0,0.05); overflow: hidden; }
+        #komentar { background-color: var(--white); padding-top: 80px; padding-bottom: 120px; }
+        .chat-container { max-width: 800px; margin: 0 auto; background: var(--white); border-radius: 24px; box-shadow: 0 15px 30px rgba(0,0,0,0.05); overflow: hidden; display: flex; flex-direction: column; border: 1px solid #e2e8f0; }
         .chat-header { background: var(--primary); color: white; padding: 20px; text-align: center; font-weight: 700; font-size: 18px; }
         .chat-messages { height: 400px; overflow-y: auto; padding: 20px; background: #f8fafc; display: flex; flex-direction: column; gap: 15px; }
-        .chat-message { background: var(--white); padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        
+        /* Custom Scrollbar for Chat */
+        .chat-messages::-webkit-scrollbar { width: 6px; }
+        .chat-messages::-webkit-scrollbar-track { background: #f1f5f9; }
+        .chat-messages::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .chat-messages::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        .chat-message { background: var(--white); padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 2px 5px rgba(0,0,0,0.02); animation: fadeIn 0.3s; }
         .chat-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 12px; color: var(--text-light); }
-        .chat-meta strong { color: var(--primary-dark); font-size: 14px; }
-        .chat-text { color: var(--text-dark); font-size: 15px; line-height: 1.5; }
+        .chat-meta strong { color: var(--primary-dark); font-size: 14px; display: flex; align-items: center; gap: 6px; }
+        .chat-text { color: var(--text-dark); font-size: 15px; line-height: 1.5; word-break: break-word; }
+        
         .chat-auth-area, .chat-input-area { padding: 20px; background: var(--white); border-top: 1px solid #e2e8f0; }
-        .chat-input-row { display: flex; gap: 10px; margin-bottom: 10px; }
-        .chat-input { width: 100%; padding: 12px 15px; border: 1px solid #cbd5e1; border-radius: 12px; font-family: inherit; font-size: 14px; outline: none; transition: border 0.3s; }
-        .chat-input:focus { border-color: var(--primary); }
-        .btn-send { background: var(--primary); color: white; border: none; padding: 12px 25px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: background 0.3s; display: flex; align-items: center; gap: 8px; justify-content: center; }
-        .btn-send:hover { background: var(--primary-dark); }
-        .btn-send:disabled { background: #94a3b8; cursor: not-allowed; }
+        .chat-input-row { display: flex; gap: 10px; margin-top: 10px; }
+        .chat-input { width: 100%; padding: 14px 18px; border: 1px solid #cbd5e1; border-radius: 12px; font-family: inherit; font-size: 15px; outline: none; transition: border 0.3s; background: var(--white); }
+        .chat-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-light); }
+        
+        .btn-send { background: var(--primary); color: white; border: none; padding: 14px 25px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; justify-content: center; font-size: 15px; font-family: inherit; }
+        .btn-send:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(5, 150, 105, 0.2); }
+        .btn-send:disabled { background: #cbd5e1; cursor: not-allowed; transform: none; box-shadow: none; color: #64748b; }
 
         /* --- MODAL (TABEL & LOGIN) --- */
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(15, 23, 42, 0.8); backdrop-filter: blur(5px); opacity: 0; transition: opacity 0.3s ease; }
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(15, 23, 42, 0.85); backdrop-filter: blur(5px); opacity: 0; transition: opacity 0.3s ease; }
         .modal.show { display: flex; opacity: 1; align-items: center; justify-content: center; }
-        .modal-content { background-color: var(--white); padding: 30px; border-radius: 20px; width: 90%; max-width: 600px; position: relative; transform: translateY(-20px); transition: transform 0.3s ease; max-height: 85vh; overflow-y: auto; }
+        .modal-content { background-color: var(--white); padding: clamp(20px, 4vw, 30px); border-radius: 20px; width: 92%; max-width: 600px; position: relative; transform: translateY(-20px); transition: transform 0.3s ease; max-height: 90vh; display: flex; flex-direction: column; }
         .modal.show .modal-content { transform: translateY(0); }
-        .close-modal { position: absolute; right: 20px; top: 20px; font-size: 24px; color: var(--text-light); cursor: pointer; transition: color 0.3s; }
-        .close-modal:hover { color: #dc2626; }
-        .data-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        .data-table th, .data-table td { padding: 12px 15px; border-bottom: 1px solid #e2e8f0; text-align: left; }
-        .data-table th { background-color: var(--primary-light); color: var(--primary-dark); font-weight: 700; position: sticky; top: 0; z-index: 10; }
+        .close-modal { position: absolute; right: 20px; top: 20px; font-size: 24px; color: var(--text-light); cursor: pointer; transition: color 0.3s; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #f1f5f9; z-index: 10; }
+        .close-modal:hover { color: #dc2626; background: #fee2e2; }
+        
+        .table-responsive { overflow-x: auto; max-height: 60vh; border-radius: 12px; border: 1px solid #e2e8f0; }
+        .data-table { width: 100%; border-collapse: collapse; text-align: left; }
+        .data-table th, .data-table td { padding: 14px 15px; border-bottom: 1px solid #e2e8f0; font-size: 15px; }
+        .data-table th { background-color: var(--primary-light); color: var(--primary-dark); font-weight: 700; position: sticky; top: 0; z-index: 5; white-space: nowrap; }
+        .data-table tbody tr:last-child td { border-bottom: none; }
         .data-table tbody tr:hover { background-color: #f8fafc; }
 
         /* --- FLOATING WA BUTTON --- */
-        .wa-float { position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: #FFF; border-radius: 50px; padding: 12px 25px; display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 700; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); z-index: 9999; text-decoration: none; transition: var(--transition); }
+        .wa-float { position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: #FFF; border-radius: 50px; padding: 12px 25px; display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 700; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); z-index: 999; text-decoration: none; transition: var(--transition); }
         .wa-float i { font-size: 24px; }
-        .wa-float:hover { transform: translateY(-5px); box-shadow: 0 15px 25px rgba(37, 211, 102, 0.5); color: white; }
+        .wa-float:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 25px rgba(37, 211, 102, 0.4); color: white; }
 
-        footer { background: var(--secondary); color: var(--white); text-align: center; padding: 40px 20px 100px 20px; }
+        footer { background: var(--secondary); color: var(--white); text-align: center; padding: 50px 20px 100px 20px; }
 
-        @media (max-width: 860px) {
+        /* =========================================
+           RESPONSIVE MEDIA QUERIES 
+           ========================================= */
+
+        /* Tablet (Landscape) & Large Screens */
+        @media (max-width: 1024px) {
+            section { padding: 80px 5%; }
+        }
+
+        /* Tablet (Portrait) & Mobile (Landscape) */
+        @media (max-width: 768px) {
             .menu-toggle { display: block; }
-            .nav-links { position: fixed; top: 70px; right: -100%; width: 100%; height: calc(100vh - 70px); background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); flex-direction: column; justify-content: flex-start; padding-top: 40px; gap: 25px; transition: right 0.4s ease-in-out; box-shadow: -5px 10px 15px rgba(0,0,0,0.05); }
+            .nav-links { position: fixed; top: 70px; right: -100%; width: 100%; height: calc(100vh - 70px); background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); flex-direction: column; justify-content: flex-start; padding: 30px 20px; gap: 20px; transition: right 0.4s ease-in-out; box-shadow: -5px 10px 15px rgba(0,0,0,0.05); overflow-y: auto; }
             .nav-links.nav-active { right: 0; }
-            .hero-title { font-size: 40px; }
-            .info-grid, .checklist-grid, .plot-container { grid-template-columns: 1fr; }
-            .tab-btn { padding: 15px 10px; font-size: 16px; }
-            .tab-content { padding: 30px 15px; }
+            .nav-links a { font-size: 18px; width: 100%; text-align: center; padding: 10px; }
+            .btn-nav, .btn-logout { width: 100%; }
+            
+            section { padding: 60px 5%; }
+            .section-header { margin-bottom: 35px; }
+            
+            .auth-input-group { flex-direction: column; }
+            .auth-input-group button { width: 100%; }
+            
             .timeline::before { left: 20px; }
             .timeline li { padding-left: 70px; margin-bottom: 30px; }
-            .wa-float { bottom: 20px; right: 20px; padding: 10px 15px; font-size: 14px; }
+            .time-badge { font-size: 13px; padding: 6px 12px; }
+            
+            .chat-input-row { flex-direction: column; }
+            .chat-input-row button { width: 100%; }
+            .chat-messages { height: 350px; }
+            
+            .wa-float { bottom: 20px; right: 20px; padding: 10px 18px; font-size: 14px; }
+            .wa-float i { font-size: 20px; }
+        }
+
+        /* Small Mobile Devices */
+        @media (max-width: 480px) {
+            .hero-tags { flex-direction: column; align-items: center; }
+            .hero-title { font-size: 2.2rem; }
+            .result-stats-grid { grid-template-columns: 1fr; } /* Stack Bus, Kamar, Jeep vertically on small phones */
+            .tab-btn { padding: 15px 10px; font-size: 15px; }
+            .timeline li { padding-left: 60px; }
+            .timeline::before { left: 15px; }
+            .time-badge { transform: translateY(-10px); left: -5px; }
+            .timeline-desc { padding: 15px; font-size: 14px; }
+            .timeline-desc strong { font-size: 16px; }
+            .card img { height: 200px; }
         }
     </style>
 </head>
@@ -153,7 +256,7 @@
     <!-- NAVBAR -->
     <nav class="navbar">
         <a href="#beranda" class="logo">
-            <svg width="160" height="40" viewBox="0 0 180 50" xmlns="http://www.w3.org/2000/svg">
+            <svg width="150" height="40" viewBox="0 0 180 50" xmlns="http://www.w3.org/2000/svg">
                 <path d="M25 10 L40 40 L10 40 Z" fill="#059669" />
                 <path d="M40 20 L55 40 L25 40 Z" fill="#10b981" />
                 <text x="65" y="25" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="22" fill="#059669">TRIP</text>
@@ -165,9 +268,10 @@
             <li><a href="#beranda" class="active">Beranda</a></li>
             <li><a href="#info">Info Penting</a></li>
             <li><a href="#rundown">Rundown</a></li>
+            <li><a href="#destinasi">Destinasi</a></li>
+            <li><a href="#fasilitas">Fasilitas</a></li>
             <li><a href="#komentar">Live Chat</a></li>
             
-            <!-- TOMBOL LOGIN DINAMIS -->
             <li id="navAuthArea">
                 <a href="#" onclick="bukaLogin()" class="btn-nav"><i class="fa-solid fa-right-to-bracket"></i> Login Peserta</a>
             </li>
@@ -196,30 +300,26 @@
             <div class="info-box">
                 <h3><i class="fa-solid fa-suitcase-rolling"></i> Checklist Bawaan Wajib</h3>
                 
-                <!-- Tampilan Jika Belum Login -->
                 <div id="checklistLock" style="text-align: center; padding: 30px 10px; background: rgba(0,0,0,0.2); border-radius: 12px; border: 1px dashed rgba(255,255,255,0.3);">
                     <i class="fa-solid fa-lock" style="font-size: 30px; color: #cbd5e1; margin-bottom: 15px;"></i>
                     <p style="color: #cbd5e1; margin-bottom: 20px; font-size: 15px;">Silakan login terlebih dahulu untuk mengakses form checklist bawaan.</p>
-                    <button type="button" onclick="bukaLogin()" class="plot-btn" style="background: var(--primary); color: white; border: none; margin: 0 auto;"><i class="fa-solid fa-right-to-bracket"></i> Login Sekarang</button>
+                    <button type="button" onclick="bukaLogin()" class="plot-btn" style="background: var(--primary); color: white; border: none; margin: 0 auto; max-width: 200px;"><i class="fa-solid fa-right-to-bracket"></i> Login Sekarang</button>
                 </div>
 
-                <!-- Tampilan Jika Sudah Login (Form) -->
                 <div id="checklistFormArea" style="display: none;">
-                    <div style="margin-bottom: 15px; font-size: 14px; color: #cbd5e1; background: rgba(0,0,0,0.2); padding: 12px 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
-                        Mengisi sebagai: <strong id="loggedInChecklistName" style="color: var(--primary-light); font-size: 15px; display: block; margin-top: 5px;">Nama Peserta</strong>
+                    <div style="margin-bottom: 20px; font-size: 14px; color: #cbd5e1; background: rgba(0,0,0,0.2); padding: 12px 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                        Mengisi sebagai: <strong id="loggedInChecklistName" style="color: var(--primary-light); font-size: 16px; display: block; margin-top: 5px;">Nama Peserta</strong>
                     </div>
 
                     <form id="checklistForm">
-                        <p style="color: #cbd5e1; font-size: 14px;">Centang barang yang sudah masuk koper:</p>
+                        <p style="color: #cbd5e1; font-size: 14px; margin-bottom: 10px;">Centang barang yang sudah masuk koper:</p>
                         <div class="checklist-grid">
-                            <label class="checklist-item"><input type="checkbox" name="item_bawaan" value="Jaket Tebal"><i class="fa-solid fa-shirt"></i><span>Jaket tebal Windbreaker</span></label>
-                            <label class="checklist-item"><input type="checkbox" name="item_bawaan" value="Sarung Tangan & Kaos Kaki"><i class="fa-solid fa-mitten"></i><span>Sarung Tangan & Kaos Kaki</span></label>
-                            <label class="checklist-item"><input type="checkbox" name="item_bawaan" value="Syal Leher & Kupluk"><i class="fa-solid fa-snowflake"></i><span>Syal Leher & Kupluk</span></label>
-                            <label class="checklist-item"><input type="checkbox" name="item_bawaan" value="Obat Pribadi"><i class="fa-solid fa-pills"></i><span>Obat-obatan Pribadi</span></label>
-                            <label class="checklist-item"><input type="checkbox" name="item_bawaan" value="Payung / Jas Hujan"><i class="fa-solid fa-umbrella"></i><span>Payung / Jas Ujan</span></label>
-							<label class="checklist-item"><input type="checkbox" name="item_bawaan" value="Powerbank / Charger"><i class="fa-solid fa-bolt"></i><span>Powerbank / Charger</span></label>
+                            <label class="checklist-item"><input type="checkbox" name="item_bawaan" value="Jaket Tebal"><i class="fa-solid fa-shirt"></i><span>Jaket Tebal</span></label>
+                            <label class="checklist-item"><input type="checkbox" name="item_bawaan" value="Sarung Tangan & Kupluk"><i class="fa-solid fa-mitten"></i><span>Sarung Tangan</span></label>
+                            <label class="checklist-item"><input type="checkbox" name="item_bawaan" value="Obat Pribadi"><i class="fa-solid fa-pills"></i><span>Obat Pribadi</span></label>
+                            <label class="checklist-item"><input type="checkbox" name="item_bawaan" value="Payung / Jas Hujan"><i class="fa-solid fa-umbrella"></i><span>Payung / Jas</span></label>
                         </div>
-                        <button type="submit" id="btnSubmitChecklist" class="plot-btn" style="margin-top: 20px; width: 100%; border:none; background: var(--primary); color: white; cursor: pointer;"><i class="fa-solid fa-paper-plane"></i> Kirim Konfirmasi</button>
+                        <button type="submit" id="btnSubmitChecklist" class="btn-send" style="margin-top: 20px; width: 100%;"><i class="fa-solid fa-paper-plane"></i> Kirim Konfirmasi</button>
                         <p id="checklistStatus" style="display:none; margin-top:15px; font-size:14px; text-align:center; font-weight: 600;"></p>
                     </form>
                 </div>
@@ -229,50 +329,38 @@
             <div class="info-box">
                 <h3><i class="fa-solid fa-clipboard-list"></i> Tata Tertib Bersama</h3>
                 <ul class="rules-list">
-                    <li>
-                        <i class="fa-regular fa-clock"></i>
-                        <div><strong>Toleransi Keterlambatan:</strong> Dimohon selalu *ON TIME* berkumpul sesuai rundown agar rute dan jadwal istirahat kita tidak terganggu.</div>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-house-user"></i>
-                        <div><strong>Etika Homestay:</strong> Menjaga ketenangan di jam istirahat malam hari demi kenyamanan Tamu Homestay lainnya.</div>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-bag-shopping"></i>
-                        <div><strong>Batas Bagasi:</strong> Bijak dalam berbelanja oleh-oleh agar bagasi bus tidak kelebihan muatan (overload).</div>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-leaf"></i>
-                        <div><strong>Kebersihan:</strong> Selalu membuang sampah pada tempatnya, baik di dalam bus, Homestay, maupun Area Wisata.</div>
-                    </li>
+                    <li><i class="fa-regular fa-clock"></i><div><strong>Toleransi Keterlambatan:</strong> Dimohon selalu *on time* berkumpul sesuai rundown agar rute tidak terganggu.</div></li>
+                    <li><i class="fa-solid fa-house-user"></i><div><strong>Etika Homestay:</strong> Menjaga ketenangan di jam istirahat malam hari demi kenyamanan bersama.</div></li>
+                    <li><i class="fa-solid fa-bag-shopping"></i><div><strong>Batas Bagasi:</strong> Bijak dalam berbelanja oleh-oleh agar bagasi bus tidak *overload*.</div></li>
+                    <li><i class="fa-solid fa-leaf"></i><div><strong>Kebersihan:</strong> Selalu menjaga kebersihan area bus, homestay, dan tempat wisata.</div></li>
                 </ul>
             </div>
         </div>
     </section>
 
     <!-- DATA PLOTTING SECTION -->
-    <section id="plotting" style="padding-bottom: 20px; background-color: var(--bg-light);">
+    <section id="plotting" style="background-color: var(--bg-light); padding-bottom: 60px;">
         <div class="section-header" style="margin-bottom: 40px;">
             <h2>Cek Data Keberangkatan</h2>
-            <p>Ketik nama Anda di bawah ini untuk melihat posisi kursi bus, teman sekamar, dan pembagian jeep.</p>
+            <p>Ketik nama Anda untuk melihat posisi kursi bus, teman sekamar, dan pembagian armada jeep.</p>
         </div>
         <div class="search-container">
             <div class="search-input-wrapper">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="searchInput" placeholder="Ketik nama Bapak/Ibu... (Contoh: Dhani, Intan)" onkeyup="cariPeserta()">
+                <input type="text" id="searchInput" placeholder="Ketik nama panggilan Anda..." onkeyup="cariPeserta()">
             </div>
             <div id="searchResult" class="search-results"></div>
         </div>
-        <p style="text-align: center; color: var(--text-light); font-size: 14px; margin-bottom: 15px;">Atau lihat seluruh data dalam format tabel:</p>
+        <p style="text-align: center; color: var(--text-light); font-size: 14px; margin-bottom: 20px;">Atau lihat seluruh data dalam format tabel:</p>
         <div class="plot-container">
-            <button onclick="bukaTabel('kursi')" class="plot-btn" style="cursor: pointer; width: 100%;"><i class="fa-solid fa-bus-simple" style="color: var(--primary);"></i> Tabel Kursi</button>
-            <button onclick="bukaTabel('kamar')" class="plot-btn" style="cursor: pointer; width: 100%;"><i class="fa-solid fa-bed" style="color: var(--primary);"></i> Tabel Kamar</button>
-            <button onclick="bukaTabel('jeep')" class="plot-btn" style="cursor: pointer; width: 100%;"><i class="fa-solid fa-truck-monster" style="color: var(--primary);"></i> Tabel Jeep</button>
+            <button onclick="bukaTabel('kursi')" class="plot-btn"><i class="fa-solid fa-bus-simple" style="color: var(--primary);"></i> Tabel Kursi</button>
+            <button onclick="bukaTabel('kamar')" class="plot-btn"><i class="fa-solid fa-bed" style="color: var(--primary);"></i> Tabel Kamar</button>
+            <button onclick="bukaTabel('jeep')" class="plot-btn"><i class="fa-solid fa-truck-monster" style="color: var(--primary);"></i> Tabel Jeep</button>
         </div>
     </section>
 
     <!-- RUNDOWN SECTION (INTERACTIVE TABS) -->
-    <section id="rundown" style="background-color: var(--bg-light);">
+    <section id="rundown" style="padding-top: 60px; background-color: var(--bg-light);">
         <div class="section-header">
             <h2>Rundown Acara</h2>
             <p>Jadwal detail perjalanan selama 3 Hari 2 Malam.</p>
@@ -290,11 +378,11 @@
                 <ul class="timeline">
                     <li>
                         <span class="time-badge">Menyesuaikan</span>
-                        <div class="timeline-desc"><br><strong>Berangkat dari Meeting Point</strong><br>Kumpul di SMA 45 Kelapa Gading Jakarta Utara.</div>
+                        <div class="timeline-desc"><strong><br>Berangkat dari Meeting Point</strong>Kumpul di SMA 45 Kelapa Gading Jakarta Utara.</div>
                     </li>
                     <li>
                         <span class="time-badge">16.00 - 00.00</span>
-                        <div class="timeline-desc"><br><strong>Makan Malam & Perjalanan</strong><br>Makan malam di Resto Rosin Subang, dilanjutkan perjalanan malam menuju Wonosobo via Secang Temanggung.</div>
+                        <div class="timeline-desc"><strong><br>Makan Malam & Perjalanan</strong>Makan malam di Resto Rosin Subang, dilanjutkan perjalanan malam menuju Wonosobo via Secang Temanggung.</div>
                     </li>
                 </ul>
             </div>
@@ -304,7 +392,7 @@
                 <ul class="timeline">
                     <li>
                         <span class="time-badge">06.00</span>
-                        <div class="timeline-desc">Sampai di Parkiran Bus Kalianget, Wonosobo.</div>
+                        <div class="timeline-desc"><br>Sampai di Parkiran Bus Kalianget, Wonosobo.</div>
                     </li>
                     <li>
                         <span class="time-badge">06.00 - 08.30</span>
@@ -312,7 +400,7 @@
                     </li>
                     <li>
                         <span class="time-badge">08.30 - 12.30</span>
-                        <div class="timeline-desc"><strong><br>Explore Dieng with Jeep</strong><br>Mengunjungi Curug Sikarim, Swiss Van Java, Kebun Teh Panama, dan Telaga Menjer.</div>
+                        <div class="timeline-desc"><strong><br>Explore Dieng with Jeep</strong>Mengunjungi Curug Sikarim, Swiss Van Java, Kebun Teh Panama, dan Telaga Menjer.</div>
                     </li>
                     <li>
                         <span class="time-badge">12.30 - 14.30</span>
@@ -325,14 +413,14 @@
                     <li>
                         <span class="time-badge">16.30 - 18.00</span>
                         <div class="timeline-desc"><br>Kembali ke Homestay - Waktu Bebas</div>
-					</li>
+                    </li>
                     <li>
                         <span class="time-badge">18.30 - 21.00</span>
                         <div class="timeline-desc"><br>Acara Makan Malam Bersama</div>
-					</li>
-					<li>
+                    </li>
+                    <li>
                         <span class="time-badge">21.00 - Selesai</span>
-                        <div class="timeline-desc"><br>Waktu Bebas & Istirahat</div>						
+                        <div class="timeline-desc"><br>Waktu Bebas & Istirahat</div>                      
                     </li>
                 </ul>
             </div>
@@ -351,25 +439,128 @@
                     <li>
                         <span class="time-badge">09.30 - 10.00</span>
                         <div class="timeline-desc"><br>Persiapan Check Out</div>
-					</li>					
+                    </li>                   
                     <li>
                         <span class="time-badge">10.00 - 11.00</span>
                         <div class="timeline-desc"><br>Check Out - Menuju Bus Utama di Kalianget</div>
                     </li>
                     <li>
                         <span class="time-badge">11.00 - 23.00</span>
-                        <div class="timeline-desc"><strong><br>Perjalanan Pulang ke Jakarta</strong><br>Makan siang di Resto ASS Purbalingga - Jawa Tengah, dilanjutkan perjalanan kembali ke SMAN 45.</div>
+                        <div class="timeline-desc"><strong><br>Perjalanan Pulang ke Jakarta</strong>Makan siang di Resto ASS Purbalingga - Jawa Tengah, dilanjutkan perjalanan kembali ke SMAN 45.</div>
                     </li>
                 </ul>
             </div>
         </div>
     </section>
 
+    <!-- DESTINASI SECTION -->
+    <section id="destinasi">
+        <div class="section-header">
+            <h2>Katalog Destinasi</h2>
+            <p>Spot-spot cantik untuk melepas penat dan berswafoto bersama rekan-rekan. Klik gambar untuk melihat *review* tempat.</p>
+        </div>
+        <div class="destinasi-grid">
+            <div class="card">
+                <a href="https://www.youtube.com/results?search_query=review+wisata+candi+arjuna+dieng" target="_blank" title="Lihat video Candi Arjuna di YouTube">
+                    <img src="https://images.unsplash.com/photo-1596404746654-734d0dfefd78?auto=format&fit=crop&q=80&w=800" onerror="this.src='https://travelspromo.com/wp-content/uploads/2021/11/penampakan-bangunan-candi-di-komplek-wisata-Candi-Arjuna-e1638334989524.jpg'" alt="Candi Arjuna">
+                </a>
+                <div class="card-content">
+                    <h4>Candi Arjuna (Free)</h4>
+                    <p>Situs purbakala Hindu tertua di Pulau Jawa yang terletak di hamparan lembah hijau yang asri.</p>
+                </div>
+            </div>
+            <div class="card">
+                <a href="https://www.youtube.com/results?search_query=review+wisata+telaga+menjer+dieng" target="_blank" title="Lihat video Telaga Menjer di YouTube">
+                    <img src="https://images.unsplash.com/photo-1506501139174-099022df5220?auto=format&fit=crop&q=80&w=800" onerror="this.src='https://static.promediateknologi.id/crop/0x378:1080x1102/1200x800/webp/photo/p1/192/2024/05/30/Snapinstaapp_431883793_18298613440152515_505012760394292864_n_1080-489215578.jpg'" alt="Telaga Menjer">
+                </a>
+                <div class="card-content">
+                    <h4>Telaga Menjer (Free)</h4>
+                    <p>Danau vulkanik terdalam di kawasan pegunungan Dieng dengan suasana yang sangat tenang.</p>
+                </div>
+            </div>
+            <div class="card">
+                <a href="https://www.youtube.com/results?search_query=swiss+van+java+dieng" target="_blank" title="Lihat video Swiss Van Java di YouTube">
+                    <img src="https://nnc-media.netralnews.com/2025/05/IMG-Netral-News-User-11902-OE53JYUVC0.jpg" onerror="this.src='https://placehold.co/800x500/0f172a/ffffff?text=Lanskap+Dieng'" alt="Lanskap Dieng">
+                </a>
+                <div class="card-content">
+                    <h4>Swiss Van Java</h4>
+                    <p>Menikmati lanskap dataran tinggi yang sangat menyerupai keindahan perbukitan hijau di Eropa.</p>
+                </div>
+            </div>
+            <div class="card">
+                <a href="https://www.youtube.com/results?search_query=review+wisata+curug+sikarim+dieng" target="_blank" title="Lihat video Curug Sikarim di YouTube">
+                    <img src="https://awsimages.detik.net.id/community/media/visual/2023/01/12/wisata-air-terjun-sikarim-dieng_169.jpeg?w=1200" onerror="this.src='https://placehold.co/800x500/0f172a/ffffff?text=Curug+Sikarim'" alt="Curug Sikarim">
+                </a>
+                <div class="card-content">
+                    <h4>Curug Sikarim</h4>
+                    <p>Air terjun alami dengan rute perjalanan menantang menggunakan Jeep, menyuguhkan panorama luar biasa.</p>
+                </div>
+            </div>
+            <div class="card">
+                <a href="https://www.youtube.com/results?search_query=wisata+kebun+teh+panama+dieng" target="_blank" title="Lihat video Kebun Teh Panama di YouTube">
+                    <img src="https://www.jogjasuper.co.id/wp-content/uploads/2025/07/liburan-Kebun-Teh-Panama.jpg" onerror="this.src='https://placehold.co/800x500/0f172a/ffffff?text=Kebun+Teh+Panama'" alt="Kebun Teh Panama">
+                </a>
+                <div class="card-content">
+                    <h4>Kebun Teh Panama (Free)</h4>
+                    <p>Hamparan kebun teh yang sejuk dan menenangkan, sangat cocok untuk *refreshing* dan bersantai.</p>
+                </div>
+            </div>
+            <div class="card">
+                <a href="https://www.youtube.com/results?search_query=titik+nol+dieng" target="_blank" title="Lihat video Titik 0 Dieng di YouTube">
+                    <img src="https://scontent.fcgk6-2.fna.fbcdn.net/v/t39.30808-6/652905062_10228043282902113_5990556386106627597_n.jpg?stp=dst-jpg_p843x403_tt6&_nc_cat=108&ccb=1-7&_nc_sid=13d280&_nc_ohc=VTiB7CqM4CwQ7kNvwGnIsR4&_nc_oc=Adrc7qZ0Zc4UnIPLbg0hf3wB21XNdLi05YRB4DCrF3EmOm7Cl8nqNZKmD3-xxlZAE7M&_nc_zt=23&_nc_ht=scontent.fcgk6-2.fna&_nc_gid=fy6ewqSfI353kqBkIwS3YQ&_nc_ss=7a389&oh=00_Af1SAseT4tu3d6TdLny928s4WOi7n5KwaPgE3w38sZ5TJQ&oe=69D93AB9" alt="Titik 0 Dieng">
+                </a>
+                <div class="card-content">
+                    <h4>Titik 0 Dieng</h4>
+                    <p>Spot foto ikonik sebagai penanda dan bukti kenangan eksklusif kunjungan ke Dataran Tinggi Dieng.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FASILITAS SECTION -->
+    <section id="fasilitas" style="background-color: var(--bg-light);">
+        <div class="section-header">
+            <h2>Fasilitas</h2>
+            <p>Informasi transparansi paket perjalanan wisata.</p>
+        </div>
+        
+        <div class="fasilitas-wrapper">
+            <div class="box-combined">
+                <div class="fasilitas-inner-grid">
+                    
+                    <div class="include-section">
+                        <h3><i class="fa-solid fa-circle-check"></i> Termasuk (Include)</h3>
+                        <ul class="check-list">
+                            <li><i class="fa-solid fa-check-circle"></i> Transportasi Big Bus 50 Seat</li>
+                            <li><i class="fa-solid fa-check-circle"></i> Penginapan Homestay (3 org/kamar)</li>
+                            <li><i class="fa-solid fa-check-circle"></i> Konsumsi 6x Makan Besar</li>
+                            <li><i class="fa-solid fa-check-circle"></i> Snack Perjalanan 1x</li>
+                            <li><i class="fa-solid fa-check-circle"></i> Tiket Masuk Semua Obyek Wisata</li>
+                            <li><i class="fa-solid fa-check-circle"></i> Biaya Sewa Jeep Explore Dieng</li>
+                            <li><i class="fa-solid fa-check-circle"></i> Dokumentasi Foto & Video</li>
+                            <li><i class="fa-solid fa-check-circle"></i> Fasilitas Homestay (AC, Water heater, Mushola, Dapur, Kopi/Teh)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="exclude-section">
+                        <h3><i class="fa-solid fa-circle-xmark"></i> Tidak Termasuk</h3>
+                        <ul class="check-list">
+                            <li><i class="fa-solid fa-times-circle"></i> Pengeluaran Pribadi</li>
+                            <li><i class="fa-solid fa-times-circle"></i> Obat-obatan khusus</li>
+                            <li><i class="fa-solid fa-times-circle"></i> Belanja Oleh-oleh</li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- KOMENTAR / LIVE CHAT SECTION -->
     <section id="komentar" style="background-color: var(--white);">
-        <div class="section-header" style="margin-bottom: 30px;">
-            <h2>Info & Chat</h2>
-            <p>Tinggalkan pesan, pertanyaan, atau sapaan untuk rekan-rekan peserta lainnya.</p>
+        <div class="section-header" style="margin-bottom: 40px;">
+            <h2>Papan Pengumuman & Chat</h2>
+            <p>Tinggalkan pesan, pertanyaan, atau sapaan untuk rekan-rekan peserta lainnya secara *real-time*.</p>
         </div>
         <div class="chat-container">
             <div class="chat-header"><i class="fa-regular fa-comments"></i> Live Chat Peserta</div>
@@ -379,23 +570,21 @@
                 </div>
             </div>
             
-            <!-- Tampilan Jika Belum Login -->
             <div class="chat-auth-area" id="chatLock" style="text-align: center; padding: 40px 20px;">
                 <i class="fa-solid fa-user-lock" style="font-size: 40px; color: #cbd5e1; margin-bottom: 15px;"></i>
-                <p style="margin-bottom: 20px; font-size: 15px; color: var(--text-light);">Silakan login terlebih dahulu untuk ikut berdiskusi di Papan Chat.</p>
+                <p style="margin-bottom: 20px; font-size: 15px; color: var(--text-light);">Silakan login terlebih dahulu untuk ikut berdiskusi di Live Chat.</p>
                 <button type="button" onclick="bukaLogin()" class="btn-send" style="width: auto; margin: 0 auto;"><i class="fa-solid fa-right-to-bracket"></i> Login Peserta</button>
             </div>
 
-            <!-- Tampilan Jika Sudah Login (Form Chat) -->
             <div class="chat-input-area" id="chatInputArea" style="display: none;">
                 <form id="chatForm">
                     <div style="margin-bottom: 12px; font-size: 13px; color: var(--text-light);">
-                        Mengirim sebagai: <strong id="loggedInChatName" style="color: var(--primary-dark);">Nama Peserta</strong>
+                        Mengirim sebagai: <strong id="loggedInChatName" style="color: var(--primary-dark); font-size: 14px;">Nama Peserta</strong>
                     </div>
                     <div class="chat-input-row">
                         <input type="text" id="chatText" class="chat-input" placeholder="Ketik pesan Anda di sini..." required>
-                        <button type="submit" id="btnSendChat" class="btn-send" style="width: auto; padding: 12px 20px;">
-                            <i class="fa-solid fa-paper-plane"></i>
+                        <button type="submit" id="btnSendChat" class="btn-send">
+                            <i class="fa-solid fa-paper-plane"></i> <span class="hide-mobile">Kirim</span>
                         </button>
                     </div>
                 </form>
@@ -404,16 +593,16 @@
     </section>
 
     <!-- FLOATING WA BUTTON -->
-    <a href="https://wa.me/6282342107392" target="_blank" class="wa-float">
-        <i class="fa-brands fa-whatsapp"></i><span>Kontak Panitia</span>
+    <a href="https://wa.me/6282342107392" target="_blank" class="wa-float" title="Hubungi Panitia">
+        <i class="fa-brands fa-whatsapp"></i><span>Bantuan</span>
     </a>
 
     <!-- MODAL TABEL DATA -->
     <div id="tabelModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="tutupTabel()"><i class="fa-solid fa-xmark"></i></span>
-            <h3 id="modalTitle" style="color: var(--secondary); margin-bottom: 15px; font-size: 24px;">Judul Tabel</h3>
-            <div style="overflow-x: auto; max-height: 50vh;">
+            <h3 id="modalTitle" style="color: var(--secondary); margin-bottom: 15px; font-size: 22px;">Judul Tabel</h3>
+            <div class="table-responsive">
                 <table class="data-table" id="modalTable"></table>
             </div>
         </div>
@@ -427,7 +616,7 @@
                 <i class="fa-solid fa-user-shield"></i>
             </div>
             <h3 style="color: var(--secondary); margin-bottom: 10px; font-size: 22px;">Login Peserta</h3>
-            <p style="color: var(--text-light); font-size: 14px; margin-bottom: 25px;">Masuk untuk mengakses fitur interaktif Smart Trip Guide to Dieng</p>
+            <p style="color: var(--text-light); font-size: 14px; margin-bottom: 25px;">Masuk untuk mengakses fitur interaktif Buku Saku.</p>
             
             <form id="globalLoginForm" onsubmit="prosesLogin(event)">
                 <div style="text-align: left; margin-bottom: 15px;">
@@ -439,18 +628,18 @@
                     <input type="password" id="loginPassword" class="chat-input" placeholder="Masukkan PIN..." required>
                 </div>
                 
-                <button type="submit" id="btnLoginSubmit" class="btn-send" style="width: 100%; padding: 15px;">Login Sekarang</button>
+                <button type="submit" id="btnLoginSubmit" class="btn-send" style="width: 100%;">Login Sekarang</button>
                 <p id="loginError" style="color: #dc2626; font-size: 13px; margin-top: 15px; display: none; line-height: 1.5;"></p>
             </form>
-            <div style="margin-top: 20px; font-size: 12px; color: #94a3b8; background: #f8fafc; padding: 10px; border-radius: 8px;">
-                <i class="fa-solid fa-circle-info"></i> Gunakan <strong>Email</strong> Anda yang terdata di panitia dan PIN Universal: <strong style="color: var(--primary-dark);">123456</strong>
+            <div style="margin-top: 20px; font-size: 12px; color: #94a3b8; background: #f8fafc; padding: 12px; border-radius: 8px; line-height: 1.5;">
+                <i class="fa-solid fa-circle-info"></i> Gunakan <strong>Email</strong> yang terdata di panitia dan PIN Universal: <strong style="color: var(--primary-dark);">123456</strong>
             </div>
         </div>
     </div>
 
     <footer>
-        <h3>Panitia Trip Dieng SMAN 45 Jakarta</h3>
-        <p style="margin-top: 10px; color: #94a3b8; font-size: 14px;">Smart Trip Guide to Dieng &copy; 2026</p>
+        <h3 style="font-size: 20px; margin-bottom: 10px;">Panitia Trip Dieng 2026</h3>
+        <p style="color: #94a3b8; font-size: 14px;">Smart Guide Digital &copy; by Iman H Ramsani.</p>
     </footer>
 
     <script>
@@ -468,14 +657,45 @@
 
         const mobileMenuBtn = document.getElementById('mobile-menu');
         const navMenu = document.getElementById('nav-menu');
-        mobileMenuBtn.addEventListener('click', () => { navMenu.classList.toggle('nav-active'); });
-        document.querySelectorAll('.nav-links a').forEach(item => { item.addEventListener('click', () => navMenu.classList.remove('nav-active')); });
+        const menuIcon = mobileMenuBtn.querySelector('i');
+
+        mobileMenuBtn.addEventListener('click', () => { 
+            navMenu.classList.toggle('nav-active'); 
+            if(navMenu.classList.contains('nav-active')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            } else {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(item => { 
+            item.addEventListener('click', () => {
+                navMenu.classList.remove('nav-active');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            }); 
+        });
+
+        // Highlight menu on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= (sectionTop - 150)) { current = section.getAttribute('id'); }
+            });
+            document.querySelectorAll('.nav-links a:not(.btn-nav):not(.btn-logout)').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) { link.classList.add('active'); }
+            });
+        });
 
         // --- 2. KONEKSI GOOGLE APPS SCRIPT ---
         const gasURL = 'https://script.google.com/macros/s/AKfycbzbJ-fhl6843IJ6wZAVrO9ccdlHS7ufwmWCzfhaP96IKzJNHo5xn6cIPJPL-oecM6yp/exec'; 
         
         let dbPeserta = [
-            // Dummy Data Fallback
             { nama: "Iman", kursi: "01", kamar: "Kamar A1", sekamar: "Dhani", jeep: "Jeep 1", email: "iman@gmail.com" },
             { nama: "Melda", kursi: "05", kamar: "Kamar B2", sekamar: "Fera", jeep: "Jeep 2", email: "melda@gmail.com" }
         ];
@@ -492,43 +712,32 @@
             }
         }
         
-        // Panggil saat web diload (load DB sekaligus cek sesi login lokal)
         window.addEventListener('DOMContentLoaded', () => {
             muatDataSpreadsheet();
             cekSesiLogin();
         });
 
         // --- 3. LOGIC AUTHENTICATION (GLOBAL LOGIN) ---
-        
         function cekSesiLogin() {
             const userData = localStorage.getItem('trip45User');
-            
             if (userData) {
-                // User sudah login sebelumnya
                 const user = JSON.parse(userData);
-                
-                // Ubah Navbar
                 document.getElementById('navAuthArea').innerHTML = `
                     <a href="#" class="btn-logout" onclick="prosesLogout()" title="Keluar">
-                        <i class="fa-solid fa-user-check"></i> ${user.nama} <i class="fa-solid fa-right-from-bracket" style="margin-left:5px;"></i>
+                        <i class="fa-solid fa-user-check"></i> <span class="hide-mobile">${user.nama}</span> <i class="fa-solid fa-right-from-bracket"></i>
                     </a>`;
                 
-                // Ubah area Checklist
                 document.getElementById('checklistLock').style.display = 'none';
                 document.getElementById('checklistFormArea').style.display = 'block';
                 document.getElementById('loggedInChecklistName').innerText = user.nama;
                 
-                // Ubah area Chat
                 document.getElementById('chatLock').style.display = 'none';
                 document.getElementById('chatInputArea').style.display = 'block';
                 document.getElementById('loggedInChatName').innerText = user.nama;
-                
             } else {
-                // User belum login
                 document.getElementById('navAuthArea').innerHTML = `
                     <a href="#" onclick="bukaLogin()" class="btn-nav"><i class="fa-solid fa-right-to-bracket"></i> Login Peserta</a>`;
                 
-                // Kunci area
                 document.getElementById('checklistLock').style.display = 'block';
                 document.getElementById('checklistFormArea').style.display = 'none';
                 document.getElementById('chatLock').style.display = 'block';
@@ -538,13 +747,14 @@
 
         function bukaLogin() {
             document.getElementById('loginModal').classList.add('show');
-            // Jika menu mobile terbuka, tutup saat modal muncul
-            if(navMenu.classList.contains('nav-active')) { navMenu.classList.remove('nav-active'); }
+            if(navMenu.classList.contains('nav-active')) { 
+                navMenu.classList.remove('nav-active');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            }
         }
         
-        function tutupLogin() {
-            document.getElementById('loginModal').classList.remove('show');
-        }
+        function tutupLogin() { document.getElementById('loginModal').classList.remove('show'); }
 
         function prosesLogin(e) {
             e.preventDefault();
@@ -556,26 +766,20 @@
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Memverifikasi...';
             btn.disabled = true;
 
-            // Simulasi proses pencarian agar tidak instan (UX lebih terasa)
             setTimeout(() => {
-                // Cari data berdasarkan email
                 const user = dbPeserta.find(p => (p.email || '').toLowerCase() === email);
 
                 if (!user) {
-                    // Gagal: Email tidak ada di database
-                    errorMsg.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> <b>Email tidak terdaftar!</b><br>Jika Anda yakin email benar, pastikan Panitia sudah klik "Deploy Versi Baru" pada GAS.';
+                    errorMsg.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> <b>Email tidak terdaftar!</b><br>Pastikan email Anda benar dan terdata di panitia.';
                     errorMsg.style.display = 'block';
                 } else if (pass !== '123456') {
-                    // Gagal: Password/PIN salah
                     errorMsg.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> PIN / Password salah.';
                     errorMsg.style.display = 'block';
                 } else {
-                    // Berhasil: Simpan ke local storage browser
                     localStorage.setItem('trip45User', JSON.stringify({ nama: user.nama, email: user.email }));
-                    
                     errorMsg.style.display = 'none';
                     tutupLogin();
-                    cekSesiLogin(); // Render ulang UI
+                    cekSesiLogin();
                     document.getElementById('globalLoginForm').reset();
                 }
                 
@@ -591,7 +795,6 @@
             }
         }
 
-
         // --- 4. FITUR PENCARIAN & TABEL PLOTTING ---
         function cariPeserta() {
             const input = document.getElementById('searchInput').value.toLowerCase();
@@ -605,19 +808,22 @@
                     html += `
                     <div class="result-card">
                         <h3 style="color: var(--secondary); margin-bottom: 15px; font-size: 18px;"><i class="fa-solid fa-user-check" style="color: var(--primary);"></i> ${p.nama}</h3>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
-                            <div style="background: #f8fafc; padding: 12px; border-radius: 12px; border: 1px solid #e2e8f0; text-align:center;">
-                                <div style="font-size: 10px; font-weight: 800;">BUS</div>
-                                <div style="color: var(--primary-dark); font-weight: 800;">No. ${p.kursi}</div>
+                        <div class="result-stats-grid">
+                            <div class="stat-box">
+                                <div class="stat-label">BUS KITA</div>
+                                <div class="stat-value"><i class="fa-solid fa-chair"></i> No. ${p.kursi}</div>
                             </div>
-                            <div style="background: #f8fafc; padding: 12px; border-radius: 12px; border: 1px solid #e2e8f0; text-align:center;">
-                                <div style="font-size: 10px; font-weight: 800;">HOMESTAY</div>
-                                <div style="color: var(--primary-dark); font-weight: 800;">${p.kamar}</div>
+                            <div class="stat-box">
+                                <div class="stat-label">HOMESTAY</div>
+                                <div class="stat-value"><i class="fa-solid fa-door-closed"></i> ${p.kamar}</div>
                             </div>
-                            <div style="background: #f8fafc; padding: 12px; border-radius: 12px; border: 1px solid #e2e8f0; text-align:center;">
-                                <div style="font-size: 10px; font-weight: 800;">JEEP</div>
-                                <div style="color: var(--primary-dark); font-weight: 800;">${p.jeep || '-'}</div>
+                            <div class="stat-box">
+                                <div class="stat-label">ARMADA JEEP</div>
+                                <div class="stat-value"><i class="fa-solid fa-truck-monster"></i> ${p.jeep || '-'}</div>
                             </div>
+                        </div>
+                        <div style="font-size: 14px; color: var(--text-light); background: #f1f5f9; padding: 12px 15px; border-radius: 12px;">
+                            <strong><i class="fa-solid fa-user-group" style="color: var(--primary); margin-right: 5px;"></i> Rekan Sekamar:</strong> ${p.sekamar}
                         </div>
                     </div>`;
                 });
@@ -634,21 +840,21 @@
             let html = ''; let dataList = [...dbPeserta]; 
 
             if(jenis === 'kursi') {
-                title.innerHTML = 'Daftar Penumpang Bus';
+                title.innerHTML = '<i class="fa-solid fa-bus-simple" style="color:var(--primary); margin-right:8px;"></i>Daftar Penumpang';
                 dataList.sort((a, b) => parseInt(a.kursi) - parseInt(b.kursi));
-                html = `<thead><tr><th style="width: 30%;">No. Kursi</th><th>Nama</th></tr></thead><tbody>`;
+                html = `<thead><tr><th>No. Kursi</th><th>Nama Peserta</th></tr></thead><tbody>`;
                 dataList.forEach(p => { html += `<tr><td><strong>${p.kursi}</strong></td><td>${p.nama}</td></tr>`; });
                 html += `</tbody>`;
             } else if(jenis === 'kamar') {
-                title.innerHTML = 'Pembagian Kamar';
+                title.innerHTML = '<i class="fa-solid fa-bed" style="color:var(--primary); margin-right:8px;"></i>Pembagian Kamar';
                 dataList.sort((a, b) => a.kamar.localeCompare(b.kamar));
-                html = `<thead><tr><th style="width: 40%;">Kamar</th><th>Nama</th></tr></thead><tbody>`;
+                html = `<thead><tr><th>Kamar</th><th>Nama Peserta</th></tr></thead><tbody>`;
                 dataList.forEach(p => { html += `<tr><td><strong>${p.kamar}</strong></td><td>${p.nama}</td></tr>`; });
                 html += `</tbody>`;
             } else if(jenis === 'jeep') {
-                title.innerHTML = 'Pembagian Jeep';
+                title.innerHTML = '<i class="fa-solid fa-truck-monster" style="color:var(--primary); margin-right:8px;"></i>Pembagian Jeep';
                 dataList.sort((a, b) => (a.jeep || '').localeCompare(b.jeep || ''));
-                html = `<thead><tr><th style="width: 40%;">Armada Jeep</th><th>Nama</th></tr></thead><tbody>`;
+                html = `<thead><tr><th>Armada Jeep</th><th>Nama Peserta</th></tr></thead><tbody>`;
                 dataList.forEach(p => { html += `<tr><td><strong>${p.jeep || '-'}</strong></td><td>${p.nama}</td></tr>`; });
                 html += `</tbody>`;
             }
@@ -656,7 +862,6 @@
         }
         function tutupTabel() { document.getElementById('tabelModal').classList.remove('show'); }
         
-        // Menutup modal dengan klik area luar
         window.addEventListener('click', (e) => { 
             if (e.target === document.getElementById('tabelModal')) tutupTabel(); 
             if (e.target === document.getElementById('loginModal')) tutupLogin();
@@ -668,10 +873,7 @@
             e.preventDefault();
             const btn = document.getElementById('btnSubmitChecklist');
             const status = document.getElementById('checklistStatus');
-            
-            // Tarik nama dari local storage secara instan
             const activeUser = JSON.parse(localStorage.getItem('trip45User'));
-            const nama = activeUser.nama; 
             
             const checkboxes = document.querySelectorAll('input[name="item_bawaan"]:checked');
             let itemsArray = []; checkboxes.forEach((cb) => { itemsArray.push(cb.value); });
@@ -685,7 +887,7 @@
 
             const formData = new URLSearchParams();
             formData.append('action', 'submitChecklist');
-            formData.append('nama', nama);
+            formData.append('nama', activeUser.nama);
             formData.append('barang', itemsArray.join(', '));
             formData.append('waktu', new Date().toLocaleString('id-ID'));
 
@@ -730,17 +932,13 @@
         }
 
         function muatKomentarLokal() {
-            renderKomentar([{waktu: "12/04/2026", nama: "Admin", pesan: "Gagal memuat chat dari server."}]);
+            renderKomentar([{waktu: new Date().toLocaleString('id-ID'), nama: "Admin", pesan: "Sedang menggunakan mode lokal, gagal terhubung ke server."}]);
         }
 
         document.getElementById('chatForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const btn = document.getElementById('btnSendChat');
-            
-            // Tarik nama dari local storage secara instan
             const activeUser = JSON.parse(localStorage.getItem('trip45User'));
-            const nama = activeUser.nama;
-            
             const pesan = document.getElementById('chatText').value;
             const waktu = new Date().toLocaleString('id-ID', { hour: '2-digit', minute:'2-digit', day:'2-digit', month:'2-digit', year:'numeric' });
 
@@ -748,7 +946,7 @@
 
             const formData = new URLSearchParams();
             formData.append('action', 'submitKomentar');
-            formData.append('nama', nama);
+            formData.append('nama', activeUser.nama);
             formData.append('pesan', pesan);
             formData.append('waktu', waktu);
 
@@ -757,11 +955,11 @@
                 .then(() => {
                     document.getElementById('chatText').value = '';
                     fetchKomentar(); 
-                    btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i>'; btn.disabled = false;
+                    btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> <span class="hide-mobile">Kirim</span>'; btn.disabled = false;
                 })
                 .catch(() => {
                     alert("Gagal mengirim pesan.");
-                    btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i>'; btn.disabled = false;
+                    btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> <span class="hide-mobile">Kirim</span>'; btn.disabled = false;
                 });
         });
 
