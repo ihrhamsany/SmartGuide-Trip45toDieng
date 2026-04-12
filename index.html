@@ -1131,8 +1131,14 @@
         function bukaLightbox(src) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightboxImg');
-            // Menghapus '&sz=w800' dari URL untuk memuat gambar resolusi aslinya di lightbox
-            const fullResSrc = src.replace('&sz=w800', '');
+            
+            // Hapus parameter kompresi otomatis dari URL Google (contoh: =w800, =s800, &sz=w800) 
+            // agar memuat resolusi asli/tertinggi (=s0)
+            let fullResSrc = src;
+            if(src.includes('googleusercontent.com') || src.includes('drive.google.com')) {
+                fullResSrc = src.replace(/=w\d+-h\d+.*/g, '=s0').replace(/=s\d+.*/g, '=s0').replace(/&sz=w\d+/g, '');
+            }
+            
             lightboxImg.src = fullResSrc;
             lightbox.classList.add('show');
         }
@@ -1164,9 +1170,9 @@
                     const canvas = document.createElement('canvas');
                     
                     // PENINGKATAN RESOLUSI & KUALITAS FOTO
-                    // Ukuran maksimal ditingkatkan dari 1000px menjadi 1600px untuk kualitas HD
-                    const MAX_WIDTH = 1600; 
-                    const MAX_HEIGHT = 1600;
+                    // Ukuran maksimal ditingkatkan ke 2560px untuk kualitas SUPER HD (Resolusi 2K)
+                    const MAX_WIDTH = 2560; 
+                    const MAX_HEIGHT = 2560;
                     let width = img.width;
                     let height = img.height;
 
@@ -1180,8 +1186,8 @@
                     const ctx = canvas.getContext('2d');
                     ctx.drawImage(img, 0, 0, width, height);
 
-                    // Kualitas kompresi JPEG ditingkatkan ke 85% (0.85) agar tidak pecah/blur
-                    const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
+                    // Kualitas kompresi JPEG dimaksimalkan ke 95% (0.95) agar sama sekali tidak blur
+                    const dataUrl = canvas.toDataURL('image/jpeg', 0.95);
 
                     // KIRIM KE GOOGLE APPS SCRIPT
                     const formData = new URLSearchParams();
