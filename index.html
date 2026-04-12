@@ -295,7 +295,6 @@
 </head>
 <body>
 
-    <!-- NAVBAR -->
     <nav class="navbar">
         <a href="#beranda" class="logo">
             <svg width="150" height="40" viewBox="0 0 180 50" xmlns="http://www.w3.org/2000/svg">
@@ -321,7 +320,6 @@
         </ul>
     </nav>
 
-    <!-- HERO SECTION -->
     <section id="beranda">
         <div class="hero-content-wrapper">
             <div class="hero-tags">
@@ -329,63 +327,59 @@
                 <div class="hero-tag weather-badge"><i class="fa-solid fa-temperature-low"></i> Dieng: 10°C - 15°C</div>
             </div>
             <h1 class="hero-title">Smart Trip Guide to Dieng</h1>
-        <p class="hero-subtitle">Pedoman Digital Perjalanan & Capacity Building Keluarga Besar SMAN 45 Jakarta – Perjalanan Tak Terlupakan Menyusuri Dataran Tinggi Dieng, Wonosobo 2026.</p>
-        <a href="#info" class="btn-primary" style="margin-top: 10px;"><i class="fa-solid fa-compass"></i> Mulai Persiapan</a>
-    </div>
-</section>
+            <p class="hero-subtitle">Pedoman Digital Perjalanan & Capacity Building Keluarga Besar SMAN 45 Jakarta – Perjalanan Tak Terlupakan Menyusuri Dataran Tinggi Dieng, Wonosobo 2026.</p>
+            <a href="#info" class="btn-primary" style="margin-top: 10px;"><i class="fa-solid fa-compass"></i> Mulai Persiapan</a>
+        </div>
+    </section>
 
-<!-- INFO PENTING -->
-<section id="info">
-    <div class="section-header reveal">
-        <h2>Persiapan & Tata Tertib</h2>
-        <p>Mohon dibaca dengan saksama agar perjalanan kita aman, nyaman, dan menyenangkan.</p>
-    </div>
-    <div class="info-grid">
-        
-        <!-- CHECKLIST BAWAAN WAJIB -->
-        <div class="info-box reveal">
-            <h3><i class="fa-solid fa-suitcase-rolling"></i> Checklist Bawaan Wajib</h3>
+    <section id="info">
+        <div class="section-header reveal">
+            <h2>Persiapan & Tata Tertib</h2>
+            <p>Mohon dibaca dengan saksama agar perjalanan kita aman, nyaman, dan menyenangkan.</p>
+        </div>
+        <div class="info-grid">
             
-            <div id="checklistLock" style="text-align: center; padding: 40px 20px; background: rgba(0,0,0,0.2); border-radius: 20px; border: 1px dashed rgba(255,255,255,0.3);">
-                <i class="fa-solid fa-lock" style="font-size: 35px; color: #cbd5e1; margin-bottom: 20px;"></i>
-                <p style="color: #cbd5e1; margin-bottom: 25px; font-size: 15px;">Silakan login terlebih dahulu untuk mengakses form checklist bawaan.</p>
-                <button type="button" onclick="bukaLogin()" class="btn-primary" style="margin: 0 auto; width: auto;"><i class="fa-solid fa-right-to-bracket"></i> Login Sekarang</button>
-            </div>
-
-            <div id="checklistFormArea" style="display: none;">
-                <div style="margin-bottom: 25px; font-size: 14.5px; color: #e2e8f0; background: rgba(0,0,0,0.25); padding: 15px 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
-                    Mengisi sebagai: <strong id="loggedInChecklistName" style="color: var(--accent); font-size: 17px; display: block; margin-top: 5px;">Nama Peserta</strong>
+            <div class="info-box reveal">
+                <h3><i class="fa-solid fa-suitcase-rolling"></i> Checklist Bawaan Wajib</h3>
+                
+                <div id="checklistLock" style="text-align: center; padding: 40px 20px; background: rgba(0,0,0,0.2); border-radius: 20px; border: 1px dashed rgba(255,255,255,0.3);">
+                    <i class="fa-solid fa-lock" style="font-size: 35px; color: #cbd5e1; margin-bottom: 20px;"></i>
+                    <p style="color: #cbd5e1; margin-bottom: 25px; font-size: 15px;">Silakan login terlebih dahulu untuk mengakses form checklist bawaan.</p>
+                    <button type="button" onclick="bukaLogin()" class="btn-primary" style="margin: 0 auto; width: auto;"><i class="fa-solid fa-right-to-bracket"></i> Login Sekarang</button>
                 </div>
 
-                <form id="checklistForm">
-                    <p style="color: #cbd5e1; font-size: 14.5px; margin-bottom: 15px;">Centang barang yang sudah masuk koper/tas:</p>
-                    <div class="checklist-grid" style="grid-template-columns: 1fr;">
-                        <label class="checklist-item"><input type="checkbox" name="item_bawaan" value="1. Jaket Tebal / Puffer Jacket"><i class="fa-solid fa-shirt"></i><span>1. Jaket Tebal / Puffer Jacket</span></label>
-                        <label class="checklist-item"><input type="checkbox" name="item_bawaan" value="2. Kupluk & Syal Leher"><i class="fa-solid fa-snowflake"></i><span>2. Kupluk & Syal Leher</span></label>
-                        <label class="checklist-item"><input type="checkbox" name="item_bawaan" value="3. Sarung Tangan & Kaos Kaki"><i class="fa-solid fa-mitten"></i><span>3. Sarung Tangan & Kaos Kaki</span></label>
-                        <label class="checklist-item"><input type="checkbox" name="item_bawaan" value="4. Obat & Perlengkapan Mandi Pribadi"><i class="fa-solid fa-kit-medical"></i><span>4. Obat & Perlengkapan Mandi Pribadi</span></label>
-                        <label class="checklist-item"><input type="checkbox" name="item_bawaan" value="5. Payung / Jas Ujan"><i class="fa-solid fa-umbrella"></i><span>5. Payung / Jas Ujan</span></label>
+                <div id="checklistFormArea" style="display: none;">
+                    <div style="margin-bottom: 25px; font-size: 14.5px; color: #e2e8f0; background: rgba(0,0,0,0.25); padding: 15px 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
+                        Mengisi sebagai: <strong id="loggedInChecklistName" style="color: var(--accent); font-size: 17px; display: block; margin-top: 5px;">Nama Peserta</strong>
                     </div>
-                    <button type="submit" id="btnSubmitChecklist" class="btn-primary" style="margin-top: 25px; width: 100%;"><i class="fa-solid fa-paper-plane"></i> Kirim Konfirmasi</button>
-                    <p id="checklistStatus" style="display:none; margin-top:15px; font-size:15px; text-align:center; font-weight: 700;"></p>
-                </form>
+
+                    <form id="checklistForm">
+                        <p style="color: #cbd5e1; font-size: 14.5px; margin-bottom: 15px;">Centang barang yang sudah masuk koper/tas:</p>
+                        <div class="checklist-grid" style="grid-template-columns: 1fr;">
+                            <label class="checklist-item"><input type="checkbox" name="item_bawaan" value="1. Jaket Tebal / Puffer Jacket"><i class="fa-solid fa-shirt"></i><span>1. Jaket Tebal / Puffer Jacket</span></label>
+                            <label class="checklist-item"><input type="checkbox" name="item_bawaan" value="2. Kupluk & Syal Leher"><i class="fa-solid fa-snowflake"></i><span>2. Kupluk & Syal Leher</span></label>
+                            <label class="checklist-item"><input type="checkbox" name="item_bawaan" value="3. Sarung Tangan & Kaos Kaki"><i class="fa-solid fa-mitten"></i><span>3. Sarung Tangan & Kaos Kaki</span></label>
+                            <label class="checklist-item"><input type="checkbox" name="item_bawaan" value="4. Obat & Perlengkapan Mandi Pribadi"><i class="fa-solid fa-kit-medical"></i><span>4. Obat & Perlengkapan Mandi Pribadi</span></label>
+                            <label class="checklist-item"><input type="checkbox" name="item_bawaan" value="5. Payung / Jas Ujan"><i class="fa-solid fa-umbrella"></i><span>5. Payung / Jas Ujan</span></label>
+                        </div>
+                        <button type="submit" id="btnSubmitChecklist" class="btn-primary" style="margin-top: 25px; width: 100%;"><i class="fa-solid fa-paper-plane"></i> Kirim Konfirmasi</button>
+                        <p id="checklistStatus" style="display:none; margin-top:15px; font-size:15px; text-align:center; font-weight: 700;"></p>
+                    </form>
+                </div>
+            </div>
+
+            <div class="info-box reveal">
+                <h3><i class="fa-solid fa-clipboard-list"></i> Tata Tertib Bersama</h3>
+                <ul class="rules-list">
+                    <li><i class="fa-regular fa-clock"></i><div><strong style="color:var(--white);">Toleransi Keterlambatan:</strong><br>Dimohon selalu tepat waktu berkumpul sesuai rundown agar rute tidak terganggu.</div></li>
+                    <li><i class="fa-solid fa-house-user"></i><div><strong style="color:var(--white);">Etika Homestay:</strong><br>Menjaga ketenangan di jam istirahat malam hari demi kenyamanan bersama.</div></li>
+                    <li><i class="fa-solid fa-bag-shopping"></i><div><strong style="color:var(--white);">Batas Bagasi:</strong><br>Bijak dalam berbelanja oleh-oleh agar bagasi bus tidak kelebihan muatan.</div></li>
+                    <li><i class="fa-solid fa-leaf"></i><div><strong style="color:var(--white);">Kebersihan Lingkungan:</strong><br>Selalu menjaga kebersihan area bus, homestay, dan tempat wisata.</div></li>
+                </ul>
             </div>
         </div>
+    </section>
 
-        <!-- TATA TERTIB -->
-        <div class="info-box reveal">
-            <h3><i class="fa-solid fa-clipboard-list"></i> Tata Tertib Bersama</h3>
-            <ul class="rules-list">
-                <li><i class="fa-regular fa-clock"></i><div><strong style="color:var(--white);">Toleransi Keterlambatan:</strong><br>Dimohon selalu tepat waktu berkumpul sesuai rundown agar rute tidak terganggu.</div></li>
-                <li><i class="fa-solid fa-house-user"></i><div><strong style="color:var(--white);">Etika Homestay:</strong><br>Menjaga ketenangan di jam istirahat malam hari demi kenyamanan bersama.</div></li>
-                <li><i class="fa-solid fa-bag-shopping"></i><div><strong style="color:var(--white);">Batas Bagasi:</strong><br>Bijak dalam berbelanja oleh-oleh agar bagasi bus tidak kelebihan muatan.</div></li>
-                <li><i class="fa-solid fa-leaf"></i><div><strong style="color:var(--white);">Kebersihan Lingkungan:</strong><br>Selalu menjaga kebersihan area bus, homestay, dan tempat wisata.</div></li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-<!-- DATA PLOTTING SECTION -->
     <section id="plotting">
         <div class="section-header reveal">
             <h2>Cek Data Keberangkatan</h2>
@@ -406,7 +400,6 @@
         </div>
     </section>
 
-    <!-- RUNDOWN SECTION (INTERACTIVE TABS) -->
     <section id="rundown">
         <div class="section-header reveal">
             <h2>Rundown Acara</h2>
@@ -420,7 +413,6 @@
                 <button class="tab-btn" onclick="openTab(event, 'day3')">Day 3 (Minggu)</button>
             </div>
 
-            <!-- Content Day 1 -->
             <div id="day1" class="tab-content active">
                 <ul class="timeline">
                     <li>
@@ -434,7 +426,6 @@
                 </ul>
             </div>
 
-            <!-- Content Day 2 -->
             <div id="day2" class="tab-content">
                 <ul class="timeline">
                     <li>
@@ -472,7 +463,6 @@
                 </ul>
             </div>
 
-            <!-- Content Day 3 -->
             <div id="day3" class="tab-content">
                 <ul class="timeline">
                     <li>
@@ -500,7 +490,6 @@
         </div>
     </section>
 
-    <!-- DESTINASI SECTION -->
     <section id="destinasi">
         <div class="section-header reveal">
             <h2>Katalog Destinasi</h2>
@@ -564,7 +553,6 @@
         </div>
     </section>
 
-    <!-- GALERI SECTION -->
     <section id="galeri">
         <div class="section-header reveal">
             <h2>Galeri Kenangan</h2>
@@ -592,17 +580,14 @@
         </div>
 
         <div class="gallery-grid reveal" id="galleryGrid">
-            <!-- Galeri foto akan dimuat di sini oleh JavaScript -->
-        </div>
+            </div>
     </section>
 
-    <!-- LIGHTBOX GALERI -->
     <div id="lightbox" class="lightbox" onclick="tutupLightbox(event)">
         <span class="close-lightbox" onclick="tutupLightbox(event)"><i class="fa-solid fa-xmark"></i></span>
         <img id="lightboxImg" src="" alt="Foto Fullscreen">
     </div>
 
-    <!-- FASILITAS SECTION -->
     <section id="fasilitas">
         <div class="section-header reveal">
             <h2>Fasilitas Paket</h2>
@@ -641,10 +626,9 @@
         </div>
     </section>
 
-    <!-- KOMENTAR / LIVE CHAT SECTION -->
     <section id="komentar">
         <div class="section-header reveal">
-            <h2>Informasi & Chat</h2>
+            <h2>Papan Pengumuman & Chat</h2>
             <p>Tinggalkan pesan, pertanyaan, atau sapaan untuk rekan-rekan peserta lainnya secara real-time.</p>
         </div>
         <div class="chat-container reveal">
@@ -681,12 +665,10 @@
         </div>
     </section>
 
-    <!-- FLOATING WA BUTTON -->
     <a href="https://wa.me/6282342107392" target="_blank" class="wa-float" title="Hubungi Panitia">
         <i class="fa-brands fa-whatsapp"></i><span>Bantuan</span>
     </a>
 
-    <!-- MODAL TABEL DATA -->
     <div id="tabelModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="tutupTabel()"><i class="fa-solid fa-xmark"></i></span>
@@ -697,7 +679,6 @@
         </div>
     </div>
 
-    <!-- MODAL GLOBAL LOGIN -->
     <div id="loginModal" class="modal">
         <div class="modal-content" style="max-width: 420px; text-align: center;">
             <span class="close-modal" onclick="tutupLogin()"><i class="fa-solid fa-xmark"></i></span>
@@ -1022,6 +1003,7 @@
                     btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Kirim Konfirmasi'; btn.disabled = false;
                 });
         });
+
         // --- 6. RENDER & SUBMIT CHAT (WHATSAPP UX UPGRADED) ---
         function renderKomentar(dataKomentar) {
             const chatBox = document.getElementById('chatMessages');
@@ -1169,7 +1151,7 @@
             
             if (!file || !user) return;
             
-            statusLabel.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sedang mengompres & mengirim ke server...';
+            statusLabel.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sedang memproses & mengirim ke server (Harap Tunggu)...';
             statusLabel.style.display = 'block';
             statusLabel.style.color = 'var(--primary)';
 
@@ -1180,8 +1162,11 @@
                 img.src = e.target.result;
                 img.onload = function () {
                     const canvas = document.createElement('canvas');
-                    const MAX_WIDTH = 1000; // Kompresi wajar untuk kualitas galeri
-                    const MAX_HEIGHT = 1000;
+                    
+                    // PENINGKATAN RESOLUSI & KUALITAS FOTO
+                    // Ukuran maksimal ditingkatkan dari 1000px menjadi 1600px untuk kualitas HD
+                    const MAX_WIDTH = 1600; 
+                    const MAX_HEIGHT = 1600;
                     let width = img.width;
                     let height = img.height;
 
@@ -1195,7 +1180,8 @@
                     const ctx = canvas.getContext('2d');
                     ctx.drawImage(img, 0, 0, width, height);
 
-                    const dataUrl = canvas.toDataURL('image/jpeg', 0.6);
+                    // Kualitas kompresi JPEG ditingkatkan ke 85% (0.85) agar tidak pecah/blur
+                    const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
 
                     // KIRIM KE GOOGLE APPS SCRIPT
                     const formData = new URLSearchParams();
@@ -1226,7 +1212,7 @@
                         }, 4000);
                     })
                     .catch(err => {
-                        statusLabel.innerHTML = '<i class="fa-solid fa-circle-xmark"></i> Error jaringan atau server sedang memproses data.';
+                        statusLabel.innerHTML = '<i class="fa-solid fa-circle-xmark"></i> Error jaringan atau server sedang memproses data. Silakan coba lagi.';
                         statusLabel.style.color = '#ef4444';
                         setTimeout(() => { statusLabel.style.display = 'none'; }, 5000);
                     });
